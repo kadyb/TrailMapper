@@ -1,0 +1,29 @@
+Package: TrailMapper
+Type: Package
+Title: Morphometric Analysis of Trails
+Version: 0.1.0
+Imports: 
+    terra,
+    centerline
+Authors@R: c(
+    person(
+      given = "Krzysztof",
+      family = "Dyba",
+      email = "krzysztof.dyba@amu.edu.pl",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-8614-3816")
+    ),
+    person(
+      given = "Tweneboah Kodua",
+      family = "Dwamena",
+      email = "tweneboah.dwamena@amu.edu.pl",
+      role = "aut",
+      comment = c("Author of the original algorithm", 
+                  ORCID = "0009-0002-2079-2423")
+    )
+  )
+Description: More about what it does (maybe more than one line).
+    Continuation lines should be indented.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
