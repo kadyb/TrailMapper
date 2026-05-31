@@ -29,9 +29,11 @@ Sample transects.
 
 \value{
 The result is a list consisting of three objects:
-  \item{}{1. The centerline of the polygon as \code{SpatVector}.}
-  \item{}{2. The data frame containing the cell values for the center points.}
-  \item{}{3. The data frame containing cell values for the transects.}
+  \enumerate{
+    \item The centerline of the polygon as \code{SpatVector}.
+    \item The data frame containing the cell values for the center points.
+    \item The data frame containing cell values for the transects.
+  }
 }
 
 \examples{
