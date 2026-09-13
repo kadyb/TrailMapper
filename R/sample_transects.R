@@ -17,6 +17,12 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     y = terra::as.polygons(y)
   }
 
+  if (!terra::same.crs(x, y)) {
+    y = terra::project(y, terra::crs(x))
+    message("Different coordinate reference systems of the datasets.
+            The boundaries have been projected automatically.")
+  }
+
   centerline = centerline::cnt_path_guess(y, keep = keep)
 
   if (spar > 0 && !is.null(spar)) {
@@ -37,7 +43,8 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   output = list(
     centerline = centerline,
     central_points = pts_extract,
-    transects = transect_extract
+    transects = transects,
+    transects_points = transect_extract
   )
   return(output)
 
