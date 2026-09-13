@@ -80,15 +80,16 @@
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The result is a list consisting of three objects:</p><ol><li><p>The centerline of the polygon as <code>SpatVector</code>.</p></li>
+    <p>The result is a list consisting of four objects:</p><ol><li><p>The centerline of the polygon as <code>SpatVector</code>.</p></li>
 <li><p>The data frame containing the cell values for the center points.</p></li>
+<li><p>Perpendicular transects to the centerline as <code>SpatVector</code>.</p></li>
 <li><p>The data frame containing cell values for the transects.</p></li>
 </ol></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://rspatial.org/" class="external-link">"terra"</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.9.27</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.9.50</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">DEM</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"DEM.tif"</span>, package <span class="op">=</span> <span class="st">"TrailMapper"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">DEM</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">DEM</span><span class="op">)</span></span></span>
@@ -99,14 +100,15 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">=</span> <span class="fu">sample_transects</span><span class="op">(</span><span class="va">DEM</span>, <span class="va">boundary</span>, interval <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ centerline    :S4 class 'SpatVector' [package "terra"]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ central_points:'data.frame':	9 obs. of  4 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ centerline      :S4 class 'SpatVector' [package "terra"]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ central_points  :'data.frame':	9 obs. of  4 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ID : num [1:9] 1 2 3 4 5 6 7 8 9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ DEM: num [1:9] 111 111 110 110 110 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x  : num [1:9] 631877 631876 631876 631875 631874 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ y  : num [1:9] 5814235 5814233 5814231 5814229 5814227 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ transects     :'data.frame':	251 obs. of  4 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ transects       :S4 class 'SpatVector' [package "terra"]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ transects_points:'data.frame':	251 obs. of  4 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ID : int [1:251] 1 1 1 1 1 1 1 1 1 1 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x  : num [1:251] 631877 631877 631877 631877 631877 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ y  : num [1:251] 5814235 5814235 5814235 5814235 5814235 ...</span>
@@ -118,11 +120,8 @@
 <span class="r-in"><span><span class="co"># plot central points</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html" class="external-link">points</a></span><span class="op">(</span><span class="va">output</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">x</span>, <span class="va">output</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">y</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># plot transects points</span></span></span>
-<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">output</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">ID</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">d</span> <span class="op">=</span> <span class="va">output</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="va">output</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">ID</span> <span class="op">==</span> <span class="va">i</span>, <span class="op">]</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span>, <span class="va">d</span><span class="op">$</span><span class="va">y</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="co"># plot transects</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">output</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="sample_transects-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -138,7 +137,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>
