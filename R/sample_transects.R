@@ -74,6 +74,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   }
 
   for (i in seq_len(n)) {
+    # calculate local direction of the line between points
     if (i == 1L) {
       angle = atan2(y[i + 1L] - y[i], x[i + 1L] - x[i])
     } else if (i == n) {
@@ -82,14 +83,18 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
       angle = atan2(y[i + 1L] - y[i - 1L], x[i + 1L] - x[i - 1L])
     }
 
+    # rotate the angle by 90 degrees
     perp_angle = angle + pi/2
 
+    # calculate offset
     dx = cos(perp_angle) * (transect.length / 2)
     dy = sin(perp_angle) * (transect.length / 2)
 
+    # rotate coordinates
     p1 = c(x[i] + dx, y[i] + dy)
     p2 = c(x[i] - dx, y[i] - dy)
 
+    # construct line from coordinates
     lines_list[[i]] = matrix(c(p1, p2), ncol = 2L, byrow = TRUE)
   }
 
