@@ -31,7 +31,7 @@ Sample transects.
 The result is a list consisting of four objects:
   \enumerate{
     \item The centerline of the polygon as \code{SpatVector}.
-    \item The data frame containing the cell values for the center points.
+    \item Points on the centerline as \code{SpatVector}.
     \item Perpendicular transects to the centerline as \code{SpatVector}.
     \item The data frame containing cell values for the transects.
   }
@@ -54,7 +54,7 @@ str(output)
 plot(output[[1]], main = "Centerline")
 
 # plot central points
-points(output[[2]]$x, output[[2]]$y, pch = 19)
+points(output[[2]])
 
 # plot transects
 lines(output[[3]])

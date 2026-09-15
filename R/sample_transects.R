@@ -37,12 +37,12 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     transects = .remove_intersections(transects)
   }
 
-  pts_extract = terra::extract(x, pts, xy = TRUE)
+  pts = terra::extract(x, pts, bind = TRUE)
   transect_extract = terra::extractAlong(x, transects, xy = TRUE)
 
   output = list(
     centerline = centerline,
-    central_points = pts_extract,
+    central_points = pts,
     transects = transects,
     transects_points = transect_extract
   )
