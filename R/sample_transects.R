@@ -100,6 +100,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
 
   perp_lines = terra::vect(lines_list, type = "lines", crs = terra::crs(pts))
   perp_lines = terra::crop(perp_lines, polygon)
+  perp_lines$ID = seq_len(n)
 
   return(perp_lines)
 }
