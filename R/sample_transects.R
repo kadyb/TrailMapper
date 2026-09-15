@@ -94,7 +94,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     p1 = c(x[i] + dx, y[i] + dy)
     p2 = c(x[i] - dx, y[i] - dy)
 
-    # construct line from coordinates
+    # set starting and ending points
     lines_list[[i]] = matrix(c(p1, p2), ncol = 2L, byrow = TRUE)
   }
 
