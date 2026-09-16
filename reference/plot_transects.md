@@ -39,7 +39,7 @@ plot_transects(x, index = NULL, fixed_elev = TRUE, save_dir = NULL, ...)
 ## Value
 
 If `save_dir = NULL`, it displays the image. If a directory is
-specified, it will be saved to disk in PNG format.
+specified, the image will be saved to disk in PNG format.
 
 ## Examples
 

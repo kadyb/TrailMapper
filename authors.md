@@ -11,12 +11,17 @@
 
 ## Citation
 
+Source:
+[`DESCRIPTION`](https://github.com/kadyb/TrailMapper/blob/main/DESCRIPTION)
+
 Dyba K, Dwamena T (2026). *TrailMapper: Morphometric Analysis of
-Trails*. R package version 0.1.0.
+Trails*. R package version 0.1.0,
+<https://kadyb.github.io/TrailMapper/>.
 
     @Manual{,
       title = {TrailMapper: Morphometric Analysis of Trails},
       author = {Krzysztof Dyba and Tweneboah Kodua Dwamena},
       year = {2026},
       note = {R package version 0.1.0},
+      url = {https://kadyb.github.io/TrailMapper/},
     }
