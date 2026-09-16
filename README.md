@@ -32,4 +32,7 @@ boundary$ID = 1 # this is now required to work
 
 output = sample_transects(DEM, boundary, interval = 2)
 str(output)
+
+# plot transect no. 1
+plot_transects(output[[4]], index = 1)
 ```
