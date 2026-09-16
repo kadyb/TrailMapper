@@ -39,6 +39,9 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     transects = .remove_intersections(transects)
   }
 
+  centerline$length = terra::perim(centerline)
+  transects$width = terra::perim(transects)
+
   pts = terra::extract(x, pts, bind = TRUE)
   transect_extract = terra::extractAlong(x, transects, xy = TRUE)
 
