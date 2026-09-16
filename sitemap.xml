@@ -1,11 +1,11 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>/404.html</loc></url>
-<url><loc>/LICENSE-text.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
-<url><loc>/authors.html</loc></url>
-<url><loc>/index.html</loc></url>
-<url><loc>/reference/index.html</loc></url>
-<url><loc>/reference/plot_transects.html</loc></url>
-<url><loc>/reference/sample_transects.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/404.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/LICENSE-text.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/LICENSE.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/authors.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/index.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/reference/index.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/reference/plot_transects.html</loc></url>
+<url><loc>https://kadyb.github.io/TrailMapper/reference/sample_transects.html</loc></url>
 </urlset>
 
