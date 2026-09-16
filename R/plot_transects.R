@@ -25,8 +25,8 @@ plot_transects = function(x, index = NULL, fixed_elev = TRUE,
   }
 
   if (isTRUE(fixed_elev)) {
-    elev_max = ceiling(max(x[idx, 4], na.rm = TRUE))
-    elev_min = floor(min(x[idx, 4], na.rm = TRUE))
+    elev_max = ceiling(max(x[idx, 4L], na.rm = TRUE))
+    elev_min = floor(min(x[idx, 4L], na.rm = TRUE))
     ylim = c(elev_min, elev_max)
   } else {
     ylim = NULL
