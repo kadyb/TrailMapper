@@ -19,8 +19,10 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
 
   if (!terra::same.crs(x, y)) {
     y = terra::project(y, terra::crs(x))
-    message("Different coordinate reference systems of the datasets.
-            The boundaries have been projected automatically.")
+    message(
+      "Different coordinate reference systems of the datasets.\n",
+      "The boundaries have been projected automatically."
+    )
   }
 
   centerline = centerline::cnt_path_guess(y, keep = keep)
