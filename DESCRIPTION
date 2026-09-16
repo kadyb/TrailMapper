@@ -24,6 +24,8 @@ Authors@R: c(
   )
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
+URL: https://kadyb.github.io/TrailMapper/, https://github.com/kadyb/TrailMapper
+BugReports: https://github.com/kadyb/TrailMapper/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
