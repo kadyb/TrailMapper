@@ -26,7 +26,7 @@ Plot transects.
 
 \value{
 If \code{save_dir = NULL}, it displays the image. If a directory is specified,
-it will be saved to disk in PNG format.
+the image will be saved to disk in PNG format.
 }
 
 \examples{
