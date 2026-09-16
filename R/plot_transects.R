@@ -39,7 +39,7 @@ plot_transects = function(x, index = NULL, fixed_elev = TRUE,
     first = x[sel, ][1L, 2:3]
     last = x[sel, ][len, 2:3]
 
-    d = dist(rbind(first, last))
+    d = stats::dist(rbind(first, last))
     d = as.vector(d)
     x_labels = seq(0, d, length.out = len)
 
