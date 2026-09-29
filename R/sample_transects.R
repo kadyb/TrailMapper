@@ -31,7 +31,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     centerline = .smooth_centerline(centerline, spar = spar)
   }
 
-  npts = floor(terra::perim(centerline) / interval)
+  npts = round(terra::perim(centerline) / interval)
   pts = terra::spatSample(centerline, size = npts, method = "regular")
   transects = .perp_lines(pts, y, transect.length = transect.length)
 
