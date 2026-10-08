@@ -42,7 +42,7 @@ sample_transects(x, y, interval, keep = 1, spar = 0.3,
 - transect.length:
 
   (Numeric). Transect length. By default, this is automatically
-  estimated.
+  estimated. If the transect is too short, enter your preferred value.
 
 ## Value
 
