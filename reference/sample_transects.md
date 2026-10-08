@@ -28,7 +28,9 @@ sample_transects(x, y, interval, keep = 1, spar = 0.3,
 
   (Numeric). The proportion of vertices from the polygon to be retained.
   The lower the value, the faster the processing, but at the cost of
-  accuracy. Default value is 1.
+  accuracy. For complex polygons (i.e., long, narrow, and winding ones),
+  a value that is too low may cause the centerline to be truncated.
+  Default value is 1.
 
 - spar:
 
