@@ -31,15 +31,16 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     centerline = .smooth_centerline(centerline, spar = spar)
   }
 
-  npts = round(terra::perim(centerline) / interval)
+  line_len = terra::perim(centerline)
+  npts = round(line_len / interval)
   pts = terra::spatSample(centerline, size = npts, method = "regular")
-  transects = .perp_lines(pts, y, transect.length = transect.length)
+  transects = .perp_lines(pts, y, line_len, transect.length)
 
   if (rm.intersections) {
     transects = .remove_intersections(transects)
   }
 
-  centerline$length = terra::perim(centerline)
+  centerline$length = line_len
   transects$width = terra::perim(transects)
 
   pts = terra::extract(x, pts, bind = TRUE)
@@ -65,7 +66,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   return(centerline_smooth)
 }
 
-.perp_lines = function(pts, polygon, transect.length = NULL) {
+.perp_lines = function(pts, polygon, len, transect.length = NULL) {
 
   x = terra::crds(pts)[, 1L]
   y = terra::crds(pts)[, 2L]
@@ -73,9 +74,8 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   lines_list = vector("list", n)
 
   if (is.null(transect.length)) {
-    e = terra::ext(polygon)
-    transect.length = sqrt((e[2L] - e[1L])^2 + (e[4L] - e[3L])^2)
-    transect.length = unname(transect.length * 0.5)
+    area = terra::expanse(polygon, unit = "m")
+    transect.length = 4 * (area / len)
   }
 
   for (i in seq_len(n)) {

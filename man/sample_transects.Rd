@@ -25,7 +25,8 @@ Sample transects.
   \item{rm.intersections}{(Logical). Should overlapping transects be removed?
   Default is \code{TRUE}.}
   \item{transect.length}{(Numeric). Transect length. By default, this is
-  automatically estimated.}
+  automatically estimated. If the transect is too short, enter your preferred
+  value.}
 }
 
 \value{
