@@ -19,7 +19,9 @@ Sample transects.
   \item{interval}{(Numeric). Distance between transects.}
   \item{keep}{(Numeric). The proportion of vertices from the polygon to be
   retained. The lower the value, the faster the processing, but at the cost
-  of accuracy. Default value is 1.}
+  of accuracy. For complex polygons (i.e., long, narrow, and winding ones),
+  a value that is too low may cause the centerline to be truncated. Default
+  value is 1.}
   \item{spar}{(Numeric). The smoothing factor of the centerline ranging from 0
   to 1. The higher the value, the greater the smoothing. Default value is 0.3.}
   \item{rm.intersections}{(Logical). Should overlapping transects be removed?
