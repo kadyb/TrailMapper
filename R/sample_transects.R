@@ -1,5 +1,5 @@
 sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
-                            rm.intersections = TRUE, transect.length = NULL) {
+                            transect.length = NULL) {
 
   if (!inherits(x, "SpatRaster")) {
     stop("`x` must be a SpatRaster.")
@@ -35,10 +35,6 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   npts = round(line_len / interval)
   pts = terra::spatSample(centerline, size = npts, method = "regular")
   transects = .perp_lines(pts, y, line_len, transect.length)
-
-  if (rm.intersections) {
-    transects = .remove_intersections(transects)
-  }
 
   centerline$length = line_len
   transects$width = terra::perim(transects)
@@ -108,19 +104,4 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   perp_lines = terra::crop(perp_lines, polygon)
 
   return(perp_lines)
-}
-
-.remove_intersections = function(x) {
-  lines_clean = x
-
-  while (TRUE) {
-    rel = terra::relate(lines_clean, relation = "intersects")
-    n = rowSums(rel)
-    if (all(n == 1L)) break
-    counts = n - 1L
-    idx = which.max(counts)
-    lines_clean = lines_clean[-idx]
-  }
-
-  return(lines_clean)
 }

@@ -5,7 +5,7 @@
 
 \usage{
 sample_transects(x, y, interval, keep = 1, spar = 0.3,
-                 rm.intersections = TRUE, transect.length = NULL)
+                 transect.length = NULL)
 }
 
 \description{
@@ -24,8 +24,6 @@ Sample transects.
   value is 1.}
   \item{spar}{(Numeric). The smoothing factor of the centerline ranging from 0
   to 1. The higher the value, the greater the smoothing. Default value is 0.3.}
-  \item{rm.intersections}{(Logical). Should overlapping transects be removed?
-  Default is \code{TRUE}.}
   \item{transect.length}{(Numeric). Transect length. By default, this is
   automatically estimated. If the transect is too short, enter your preferred
   value.}
