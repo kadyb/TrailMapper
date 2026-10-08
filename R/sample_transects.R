@@ -31,6 +31,8 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     centerline = .smooth_centerline(centerline, spar = spar)
   }
 
+  centerline = terra::crop(centerline, y)
+
   line_len = terra::perim(centerline)
   npts = round(line_len / interval)
   pts = terra::spatSample(centerline, size = npts, method = "regular")
