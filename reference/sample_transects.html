@@ -39,7 +39,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sample_transects</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">interval</span>, keep <span class="op">=</span> <span class="fl">1</span>, spar <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>                 rm.intersections <span class="op">=</span> <span class="cn">TRUE</span>, transect.length <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span>                 transect.length <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -65,10 +65,6 @@
   <dt id="arg-spar">spar<a class="anchor" aria-label="anchor" href="#arg-spar"></a></dt>
 <dd><p>(Numeric). The smoothing factor of the centerline ranging from 0
   to 1. The higher the value, the greater the smoothing. Default value is 0.3.</p></dd>
-
-  <dt id="arg-rm-intersections">rm.intersections<a class="anchor" aria-label="anchor" href="#arg-rm-intersections"></a></dt>
-<dd><p>(Logical). Should overlapping transects be removed?
-  Default is <code>TRUE</code>.</p></dd>
 
   <dt id="arg-transect-length">transect.length<a class="anchor" aria-label="anchor" href="#arg-transect-length"></a></dt>
 <dd><p>(Numeric). Transect length. By default, this is
