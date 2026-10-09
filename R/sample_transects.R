@@ -39,6 +39,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   transects = .perp_lines(pts, y, line_len, transect.length)
 
   centerline$length = line_len
+  centerline$sinuosity = .sinuosity(centerline, line_len)
   transects$width = terra::perim(transects)
 
   pts = terra::extract(x, pts, bind = TRUE)
@@ -106,4 +107,14 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   perp_lines = terra::crop(perp_lines, polygon)
 
   return(perp_lines)
+}
+
+.sinuosity = function(x, line_len) {
+  coords = crds(x)
+  first = coords[1L, ]
+  last = coords[nrow(coords), ]
+  d = dist(rbind(first, last))
+  d = as.vector(d)
+  sinuosity = line_len / d
+  return(sinuosity)
 }
