@@ -110,10 +110,10 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
 }
 
 .sinuosity = function(x, line_len) {
-  coords = crds(x)
+  coords = terra::crds(x)
   first = coords[1L, ]
   last = coords[nrow(coords), ]
-  d = dist(rbind(first, last))
+  d = stats::dist(rbind(first, last))
   d = as.vector(d)
   sinuosity = line_len / d
   return(sinuosity)
