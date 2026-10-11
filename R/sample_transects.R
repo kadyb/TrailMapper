@@ -34,8 +34,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   centerline = terra::crop(centerline, y)
 
   line_len = terra::perim(centerline)
-  npts = round(line_len / interval)
-  pts = terra::spatSample(centerline, size = npts, method = "regular")
+  pts = .points_on_line(centerline, interval = interval)
   transects = .perp_lines(pts, y, line_len, transect.length)
 
   centerline$length = line_len
@@ -117,4 +116,20 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   d = as.vector(d)
   sinuosity = line_len / d
   return(sinuosity)
+}
+
+.points_on_line = function(line, interval) {
+  coords = terra::crds(line)
+  d_seg = sqrt(diff(coords[, 1L])^2 + diff(coords[, 2L])^2)
+  d_total = c(0, cumsum(d_seg))
+  last = d_total[length(d_total)]
+  at = seq(0, last, by = interval)
+
+  pts = cbind(
+    x = stats::approx(d_total, coords[, 1L], xout = at)$y,
+    y = stats::approx(d_total, coords[, 2L], xout = at)$y
+  )
+
+  pts = terra::vect(pts, type = "points", crs = terra::crs(line))
+  return(pts)
 }
