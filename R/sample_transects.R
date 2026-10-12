@@ -135,5 +135,6 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
 
   pts = pts[-1, ] # skip first point which is on the border
   pts = terra::vect(pts, type = "points", crs = terra::crs(line))
+  pts$ID = seq_len(nrow(pts))
   return(pts)
 }
