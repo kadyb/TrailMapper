@@ -26,6 +26,9 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
   }
 
   centerline = centerline::cnt_path_guess(y, keep = keep)
+  if (ncol(centerline) != 0) {
+    values(centerline) = NULL
+  }
 
   if (spar > 0 && !is.null(spar)) {
     centerline = .smooth_centerline(centerline, spar = spar)
