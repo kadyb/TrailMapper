@@ -130,6 +130,7 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     y = stats::approx(d_total, coords[, 2L], xout = at)$y
   )
 
+  pts = pts[-1, ] # skip first point which is on the border
   pts = terra::vect(pts, type = "points", crs = terra::crs(line))
   return(pts)
 }
