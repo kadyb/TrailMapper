@@ -2,9 +2,8 @@ Package: TrailMapper
 Type: Package
 Title: Morphometric Analysis of Trails
 Version: 0.1.0
-Imports: 
-    terra,
-    centerline
+Imports: terra, centerline
+Suggests: tinytest
 Authors@R: c(
     person(
       given = "Krzysztof",
