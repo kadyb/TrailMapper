@@ -5,8 +5,7 @@ Sample transects.
 ## Usage
 
 ``` r
-sample_transects(x, y, interval, keep = 1, spar = 0.3,
-                 transect.length = NULL)
+sample_transects(x, y, interval, keep = 1, smooth = 0.3, transect.length = NULL)
 ```
 
 ## Arguments
@@ -32,7 +31,7 @@ sample_transects(x, y, interval, keep = 1, spar = 0.3,
   a value that is too low may cause the centerline to be truncated.
   Default value is 1.
 
-- spar:
+- smooth:
 
   (Numeric). The smoothing factor of the centerline ranging from 0 to 1.
   The higher the value, the greater the smoothing. Default value is 0.3.
@@ -72,11 +71,11 @@ str(output)
 #>  $ centerline      :S4 class 'SpatVector' [package "terra"]
 #>  $ central_points  :S4 class 'SpatVector' [package "terra"]
 #>  $ transects       :S4 class 'SpatVector' [package "terra"]
-#>  $ transects_points:'data.frame':    251 obs. of  4 variables:
-#>   ..$ ID : int [1:251] 1 1 1 1 1 1 1 1 1 1 ...
-#>   ..$ x  : num [1:251] 631877 631877 631877 631877 631877 ...
-#>   ..$ y  : num [1:251] 5814235 5814235 5814235 5814235 5814235 ...
-#>   ..$ DEM: num [1:251] 111 111 111 111 111 ...
+#>  $ transects_points:'data.frame':    253 obs. of  4 variables:
+#>   ..$ ID : int [1:253] 1 1 1 1 1 1 1 1 1 1 ...
+#>   ..$ x  : num [1:253] 631877 631877 631877 631877 631877 ...
+#>   ..$ y  : num [1:253] 5814234 5814234 5814234 5814234 5814234 ...
+#>   ..$ DEM: num [1:253] 111 111 111 111 111 ...
 
 # plot centerline
 plot(output[[1]], main = "Centerline")

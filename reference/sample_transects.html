@@ -38,8 +38,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sample_transects</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">interval</span>, keep <span class="op">=</span> <span class="fl">1</span>, spar <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>                 transect.length <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sample_transects</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">interval</span>, keep <span class="op">=</span> <span class="fl">1</span>, smooth <span class="op">=</span> <span class="fl">0.3</span>, transect.length <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -62,7 +61,7 @@
   a value that is too low may cause the centerline to be truncated. Default
   value is 1.</p></dd>
 
-  <dt id="arg-spar">spar<a class="anchor" aria-label="anchor" href="#arg-spar"></a></dt>
+  <dt id="arg-smooth">smooth<a class="anchor" aria-label="anchor" href="#arg-smooth"></a></dt>
 <dd><p>(Numeric). The smoothing factor of the centerline ranging from 0
   to 1. The higher the value, the greater the smoothing. Default value is 0.3.</p></dd>
 
@@ -97,11 +96,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ centerline      :S4 class 'SpatVector' [package "terra"]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ central_points  :S4 class 'SpatVector' [package "terra"]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ transects       :S4 class 'SpatVector' [package "terra"]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ transects_points:'data.frame':	251 obs. of  4 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ID : int [1:251] 1 1 1 1 1 1 1 1 1 1 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x  : num [1:251] 631877 631877 631877 631877 631877 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ y  : num [1:251] 5814235 5814235 5814235 5814235 5814235 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ DEM: num [1:251] 111 111 111 111 111 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ transects_points:'data.frame':	253 obs. of  4 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ID : int [1:253] 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x  : num [1:253] 631877 631877 631877 631877 631877 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ y  : num [1:253] 5814234 5814234 5814234 5814234 5814234 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ DEM: num [1:253] 111 111 111 111 111 ...</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># plot centerline</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">output</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, main <span class="op">=</span> <span class="st">"Centerline"</span><span class="op">)</span></span></span>
