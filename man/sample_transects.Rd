@@ -4,8 +4,7 @@
 \title{Sample transects}
 
 \usage{
-sample_transects(x, y, interval, keep = 1, spar = 0.3,
-                 transect.length = NULL)
+sample_transects(x, y, interval, keep = 1, smooth = 0.3, transect.length = NULL)
 }
 
 \description{
@@ -22,7 +21,7 @@ Sample transects.
   of accuracy. For complex polygons (i.e., long, narrow, and winding ones),
   a value that is too low may cause the centerline to be truncated. Default
   value is 1.}
-  \item{spar}{(Numeric). The smoothing factor of the centerline ranging from 0
+  \item{smooth}{(Numeric). The smoothing factor of the centerline ranging from 0
   to 1. The higher the value, the greater the smoothing. Default value is 0.3.}
   \item{transect.length}{(Numeric). Transect length. By default, this is
   automatically estimated. If the transect is too short, enter your preferred

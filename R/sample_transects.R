@@ -1,4 +1,4 @@
-sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
+sample_transects = function(x, y, interval, keep = 1, smooth = 0.3,
                             transect.length = NULL) {
 
   if (!inherits(x, "SpatRaster")) {
@@ -30,8 +30,8 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
     values(centerline) = NULL
   }
 
-  if (spar > 0 && !is.null(spar)) {
-    centerline = .smooth_centerline(centerline, spar = spar)
+  if (smooth > 0 && !is.null(smooth)) {
+    centerline = .smooth_centerline(centerline, smooth = smooth)
   }
 
   centerline = terra::crop(centerline, y)
@@ -57,11 +57,11 @@ sample_transects = function(x, y, interval, keep = 1, spar = 0.3,
 
 }
 
-.smooth_centerline = function(centerline, spar = 0.3) {
+.smooth_centerline = function(centerline, smooth = 0.3) {
   crds = terra::crds(centerline)
   idx = seq_len(nrow(crds))
-  smooth_x = stats::smooth.spline(idx, crds[, 1L], spar = spar)$y
-  smooth_y = stats::smooth.spline(idx, crds[, 2L], spar = spar)$y
+  smooth_x = stats::smooth.spline(idx, crds[, 1L], spar = smooth)$y
+  smooth_y = stats::smooth.spline(idx, crds[, 2L], spar = smooth)$y
   centerline_smooth = terra::vect(cbind(smooth_x, smooth_y),
                                   type = "lines", crs = terra::crs(centerline))
   return(centerline_smooth)
