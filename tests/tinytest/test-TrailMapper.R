@@ -8,7 +8,7 @@ boundary = system.file("boundary.gpkg", package = "TrailMapper")
 boundary = vect(boundary)
 boundary$ID = 1 # this is now required to work
 
-output = sample_transects(DEM, boundary, interval = 2, smooth = NULL)
+output = sample_transects(DEM, boundary, interval = 2, smooth = 0)
 
 
 expect_equal(nrow(output$transects), 9,
