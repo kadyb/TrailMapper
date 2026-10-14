@@ -30,9 +30,15 @@ boundary = system.file("boundary.gpkg", package = "TrailMapper")
 boundary = vect(boundary)
 boundary$ID = 1 # this is now required to work
 
-output = sample_transects(DEM, boundary, interval = 2)
-str(output)
+# create the centerline
+cl = centerline(boundary, smooth = 0)
+
+# create transects
+tr = transects(cl, boundary, interval = 2)
+
+# sample transects
+tr_smp = get_values(DEM, tr$transects)
 
 # plot transect no. 1
-plot_transects(output[[4]], index = 1)
+plot_transects(tr_smp, index = 1)
 ```
