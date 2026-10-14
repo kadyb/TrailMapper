@@ -21,6 +21,7 @@ remotes::install_github("kadyb/TrailMapper")
 
 ```r
 library("terra")
+library("TrailMapper")
 
 DEM = system.file("DEM.tif", package = "TrailMapper")
 DEM = rast(DEM)
