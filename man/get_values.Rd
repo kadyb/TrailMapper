@@ -36,8 +36,8 @@ cl = centerline(boundary, smooth = 0)
 tr = transects(cl, boundary, interval = 2)
 
 tr_smp = get_values(DEM, tr$transects)
-head(smp)
+head(tr_smp) # data frame
 
 pt_smp = get_values(DEM, tr$centers)
-head(pt_smp)
+head(pt_smp) # SpatVector
 }
