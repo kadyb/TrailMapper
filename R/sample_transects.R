@@ -27,7 +27,7 @@ sample_transects = function(x, y, interval, keep = 1, smooth = 0.3,
 
   centerline = centerline::cnt_path_guess(y, keep = keep)
   if (ncol(centerline) != 0) {
-    values(centerline) = NULL
+    terra::values(centerline) = NULL
   }
 
   if (smooth > 0 && !is.null(smooth)) {
