@@ -4,7 +4,7 @@
 \title{Generate center points}
 
 \usage{
-centerline(x, interval)
+centerpoints(x, interval)
 }
 
 \description{
