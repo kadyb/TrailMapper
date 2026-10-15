@@ -33,11 +33,14 @@ boundary$ID = 1 # this is now required to work
 # create the centerline
 cl = centerline(boundary, smooth = 0)
 
-# create transects
-tr = transects(cl, boundary, interval = 2)
+# create center points
+pts = centerpoints(cl, interval = 2)
 
-# sample transects
-tr_smp = get_values(DEM, tr$transects)
+# create transects
+tr = transects(cl, pts, boundary)
+
+# sample for transects
+tr_smp = get_values(DEM, tr)
 
 # plot transect no. 1
 plot_transects(tr_smp, index = 1)

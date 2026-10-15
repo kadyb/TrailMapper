@@ -41,7 +41,7 @@ boundary$ID = 1 # this is now required to work
 
 cl = centerline(boundary, smooth = 0)
 tr = transects(cl, boundary, interval = 2)
-tr_smp = get_values(DEM, tr$transects)
+tr_smp = get_values(DEM, tr)
 
 # plot transect no. 1
 plot_transects(tr_smp, index = 1)

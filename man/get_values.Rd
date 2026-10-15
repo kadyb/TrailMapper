@@ -33,11 +33,12 @@ boundary = vect(boundary)
 boundary$ID = 1 # this is now required to work
 
 cl = centerline(boundary, smooth = 0)
-tr = transects(cl, boundary, interval = 2)
+pts = centerpoints(cl, interval = 2)
+tr = transects(cl, pts, boundary)
 
-tr_smp = get_values(DEM, tr$transects)
-head(tr_smp) # data frame
+# sample for centerpoints (SpatVector)
+pts = get_values(DEM, pts)
 
-pt_smp = get_values(DEM, tr$centers)
-head(pt_smp) # SpatVector
+# sample for transects (data frame)
+tr_smp = get_values(DEM, tr)
 }

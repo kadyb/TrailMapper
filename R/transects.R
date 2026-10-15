@@ -1,4 +1,4 @@
-transects = function(x, polygon, interval, transect.length = NULL) {
+transects = function(x, centerpoints, polygon, transect.length = NULL) {
 
   if (!inherits(x, "SpatVector")) {
     stop("`x` must be a SpatVector.")
@@ -6,10 +6,6 @@ transects = function(x, polygon, interval, transect.length = NULL) {
 
   if (!inherits(polygon, "SpatVector")) {
     stop("`polygon` must be a SpatVector.")
-  }
-
-  if (interval < 0) {
-    stop("`interval` must be greater than zero.")
   }
 
   if (terra::is.lines(polygon)) {
@@ -25,13 +21,10 @@ transects = function(x, polygon, interval, transect.length = NULL) {
   }
 
   line_len = terra::perim(x)
-  pts = .points_on_line(x, interval = interval)
-  transects = .perp_lines(pts, polygon, line_len, transect.length)
+  transects = .perp_lines(centerpoints, polygon, line_len, transect.length)
   transects$width = terra::perim(transects)
 
-  output = list(transects = transects, centers = pts)
-  return(output)
-
+  return(transects)
 }
 
 .perp_lines = function(pts, polygon, len, transect.length = NULL) {
@@ -78,20 +71,4 @@ transects = function(x, polygon, interval, transect.length = NULL) {
   return(perp_lines)
 }
 
-.points_on_line = function(line, interval) {
-  coords = terra::crds(line)
-  d_seg = sqrt(diff(coords[, 1L])^2 + diff(coords[, 2L])^2)
-  d_total = c(0, cumsum(d_seg))
-  last = d_total[length(d_total)]
-  at = seq(0, last, by = interval)
 
-  pts = cbind(
-    x = stats::approx(d_total, coords[, 1L], xout = at)$y,
-    y = stats::approx(d_total, coords[, 2L], xout = at)$y
-  )
-
-  pts = pts[-1, ] # skip first point which is on the border
-  pts = terra::vect(pts, type = "points", crs = terra::crs(line))
-  pts$ID = seq_len(nrow(pts))
-  return(pts)
-}
