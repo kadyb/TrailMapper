@@ -1,2 +1,5 @@
-export(sample_transects)
+export(centerline)
+export(centerpoints)
+export(transects)
+export(get_values)
 export(plot_transects)
