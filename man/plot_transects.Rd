@@ -40,7 +40,8 @@ boundary = vect(boundary)
 boundary$ID = 1 # this is now required to work
 
 cl = centerline(boundary, smooth = 0)
-tr = transects(cl, boundary, interval = 2)
+pts = centerpoints(cl, interval = 2)
+tr = transects(cl, pts, boundary)
 tr_smp = get_values(DEM, tr)
 
 # plot transect no. 1
